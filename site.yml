@@ -6,7 +6,7 @@
   vars:
       region: us-east-1
       instance_type: t2.micro
-      ami: ami-7c412f13  # Ubuntu 16.04 LTS
+      ami: ami-059eeca93cf09eebd  # Ubuntu Server 16.04 LTS (HVM), SSD Volume Type
       keypair: boto_keypair # This is one of my keys that I already have in AWS
       security_group: BOTO-SecGroup
   
