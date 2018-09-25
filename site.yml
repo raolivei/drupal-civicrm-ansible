@@ -17,7 +17,7 @@
        with_items: ec2.tagged_instances
 
      - name: Wait for SSH to come up
-       wait_for: host={{ item.public_ip }} port=22  search_regex=OpenSSH delay=210 timeout=420 state=started
+       wait_for: host=hostname=ec2-54-152-105-245.compute-1.amazonaws.com port=22  search_regex=OpenSSH delay=210 timeout=420 state=started
        with_items: ec2.tagged_instances
 
 
