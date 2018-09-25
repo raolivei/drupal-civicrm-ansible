@@ -8,12 +8,13 @@
       instance_type: t2.micro
       ami: ami-7c412f13  # Ubuntu 16.04 LTS
       keypair: boto_keypair # This is one of my keys that I already have in AWS
+      security_group: BOTO-SecGroup
   
   tasks:
      - name: create a security group 
        ec2_group:
-         name: MySecGroup
-         description: MyOwnGrp ec2 group
+         name: "{{ security_group }}"
+         description: BOTO-SecGroup ec2 group
          
          region: "{{ region }}"
          rules:
@@ -39,7 +40,7 @@
 
      - name: Create the ec2 instance
        ec2:
-          group: MyOwnGrp  # security group name
+          group: "{{ security_group }}"  # security group name
           instance_type: "{{ instance_type}}"
           image: "{{ ami }}"
           wait: true
