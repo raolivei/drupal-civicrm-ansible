@@ -10,7 +10,6 @@
       keypair: boto_keypair # This is one of my keys that I already have in AWS
       security_group: BOTO-SecGroup
   
-
      - name: Add new instance to proper ansible group
        add_host: hostname=ec2-54-152-105-245.compute-1.amazonaws.com groupname=rafael-servers ansible_ssh_host=54.152.105.245 ansible_ssh_user=ubuntu ansible_ssh_private_key_file=/home/user/boto_keypair.pem
        with_items: ec2.tagged_instances
