@@ -8,14 +8,6 @@
       instance_type: t2.micro
       ami: ami-7c412f13  # Ubuntu 16.04 LTS
       keypair: boto_keypair # This is one of my keys that I already have in AWS
-
-- name: Ensure boto and boto3 modules are installed
-  pip:
-    name: "{{ item }}"
-  with_items:
-    - boto3
-    - botocore
-  delegate_to: "{{ ec2_instance_ip }}"
   
   tasks:
      - name: create a security group 
