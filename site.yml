@@ -40,7 +40,7 @@
 
      - name: Create the ec2 instance
        ec2:
-          group: "{{ security_group }}"  # security group name
+          group: "BOTO-SecGroup"  # security group name
           instance_type: "{{ instance_type}}"
           image: "{{ ami }}"
           wait: true
