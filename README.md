@@ -62,5 +62,5 @@ http://docs.pythonboto.org/en/latest/boto_config_tut.html#credentials
 
 export PYTHONPATH=/usr/local/lib/python2.7/dist-packages
 
-export AWS_ACCESS_KEY_ID="AKIAID7GLEY6IJST4BJQ"
-export AWS_SECRET_ACCESS_KEY="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"
+export AWS_ACCESS_KEY_ID=""
+export AWS_SECRET_ACCESS_KEY=""
