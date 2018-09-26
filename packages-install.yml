@@ -4,10 +4,11 @@
   gather_facts: False
   tasks:
     - name: dev locale
-      action: command sudo update-locale LC_ALL=en_US.UTF-8
-    
+      action: command update-locale LC_ALL=en_US.UTF-8
+      become: yes
+
     - name: set default locale
-      sudo: yes
+      become: yes
       lineinfile: dest=/etc/default/locale
         regexp="LC_ALL"
         line="LC_ALL=\"en_US.UTF-8\""
@@ -43,9 +44,8 @@
     - name: Lets Encrypt client
       git: dest=/opt/certbot clone=yes repo=https://github.com/certbot/certbot force=yes
 
-    - name: Create Certificate 
+    - name: Create Certificate
       shell: /opt/certbot/certbot-auto certonly --nginx --noninteractive --email rafa.oliveira1@gmail.com --agree-tos -d raolivei.ddns.net
-
 
     # Auto-renew certificates and reload nginx
     - name: Add crontab to renew certificates
@@ -68,5 +68,3 @@
       service:
         name: php7.0-fpm
         state: restarted
-
-
