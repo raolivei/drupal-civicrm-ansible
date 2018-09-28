@@ -37,7 +37,7 @@
         owner: "root"
         mode: 0740
 
-    - name: Source it   
+    - name: Source it
       command: php /root/.drush/civicrm.drush.inc
 
     - name: Drush clear-cache
@@ -58,9 +58,8 @@
     - name: Change ownership
       command: chown www-data:www-data /home/drupal/public_html/sites/default/files -R
 
-
     - name: Modify CiviCRM Extension directory prereq
       lineinfile: dest=/home/drupal/public_html/sites/default/civicrm.settings.php regexp='^(.*)Add this line only once above any settings overrides' line="global $civicrm_setting;"
 
-    - name: Modify CiviCRM Extension directory 
+    - name: Modify CiviCRM Extension directory
       lineinfile: dest=/home/drupal/public_html/sites/default/civicrm.settings.php regexp='^(.*)extensionsDir' line="$civicrm_setting['Directory Preferences']['extensionsDir'] = '/home/drupal/public_html/sites/default/files/extensions';"

@@ -12,8 +12,8 @@
   tasks:
      - name: create a security group
        ec2_group:
-         name: DRUPAL_CIVICRM_ANSIBLE_SecGroup
-         description: DRUPAL_CIVICRM_ANSIBLE_SecGroup
+         name: DRUPAL_CIVICRM_SecGroup
+         description: DRUPAL_CIVICRM_SecGroup
 
          region: "{{ region }}"
          rules:
@@ -38,7 +38,7 @@
 
      - name: Create the ec2 instance
        ec2:
-          group: DRUPAL_CIVICRM_ANSIBLE_SecGroup  # security group name
+          group: DRUPAL_CIVICRM_SecGroup  # security group name
           instance_type: "{{ instance_type}}"
           image: "{{ ami }}"
           wait: true
@@ -46,9 +46,9 @@
           exact_count: 1
           #count: 1  # default
           count_tag:
-             Name: Demo
+             Name: ubuntu_16.4_instance
           instance_tags:
-             Name: Demo
+             Name: ubuntu_16.4_instance created by boto+Ansible
           keypair: "{{ keypair }}"
        register: ec2
 
