@@ -37,9 +37,9 @@ server {
         listen 443 default ssl deferred;
 
         ssl on;
-        ssl_certificate         /etc/letsencrypt/live/raolivei.net/fullchain.pem;
-        ssl_certificate_key     /etc/letsencrypt/live/raolivei.net/privkey.pem;
-        ssl_trusted_certificate /etc/letsencrypt/live/raolivei.net/fullchain.pem;
+        ssl_certificate         /etc/letsencrypt/live/instance.raolivei.net/fullchain.pem;
+        ssl_certificate_key     /etc/letsencrypt/live/instance.raolivei.net/privkey.pem;
+        ssl_trusted_certificate /etc/letsencrypt/live/instance.raolivei.net/fullchain.pem;
 
         ssl_session_cache shared:SSL:50m;
         ssl_session_timeout 5m;

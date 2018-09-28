@@ -45,7 +45,7 @@
       git: dest=/opt/certbot clone=yes repo=https://github.com/certbot/certbot force=yes
 
     - name: Create Certificate
-      shell: /opt/certbot/certbot-auto certonly --nginx --noninteractive --email rafa.oliveira1@gmail.com --agree-tos -d raolivei.net
+      shell: /opt/certbot/certbot-auto certonly --nginx --noninteractive --email rafa.oliveira1@gmail.com --agree-tos -d instance.raolivei.net
 
     # Auto-renew certificates and reload nginx
     - name: Add crontab to renew certificates
