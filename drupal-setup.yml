@@ -1,5 +1,5 @@
 - name: Drupal Setup
-  hosts: rafael-servers
+  hosts: ansible-servers
   become: Yes
   gather_facts: False
   vars:
@@ -76,8 +76,7 @@
       file:
         src: /etc/nginx/sites-available/drupal
         dest: /etc/nginx/sites-enabled/drupal
-        state: link    
+        state: link
 
     - name: Restart NGINX after adding ssl
       service: name=nginx state=restarted
-

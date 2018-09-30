@@ -1,5 +1,5 @@
 - name: CiviCRM Setup
-  hosts: rafael-servers
+  hosts: ansible-servers
   become: Yes
   gather_facts: False
   tasks:

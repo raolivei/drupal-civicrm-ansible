@@ -1,5 +1,5 @@
 - name: Pakages install
-  hosts: rafael-servers
+  hosts: ansible-servers
   become: Yes
   gather_facts: False
   tasks:
