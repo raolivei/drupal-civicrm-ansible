@@ -1,5 +1,6 @@
--- # drupal-civicrm-ansible
--- Drupal - CiviCRM Ansible Demo installation to AWS
+# drupal-civicrm-ansible
+
+Drupal - CiviCRM Ansible Demo installation to AWS
 
 Cloud installation of Drupal 7 and CiviCRM in a secure fashion with SSL certificates from https://letsencrypt.org/ using Ansible.
 The target server is an EC2 instance configured with a new security group.
@@ -12,25 +13,28 @@ CiviCRM and Drupal are installed in different databases as this is considered be
 
 ## Prerequisites:
 
+* python 2.7
+* boto
 * boto3
 * ansible 2.6.4
-* python 2.7
 
-To be able to use the AWS via Ansible we are going to use boto library. To install it you just need to run this command.
+To be able to use the AWS via Ansible we are going to use boto and boto3 libraries.
 
-# Install
+## Install
 
 1. Leverage your privileges
 `$ sudo su`
 
 2. Install prerequisites
-`$ apt install -y python-pip
-$ pip install boto3`
+`$ apt install -y python-pip`
+`$ pip install boto`
+`$ pip install boto3`
+`$ apt install -y ansible`
 
 3. Point PYTHONPATH variable to your python installation directory
 $ export PYTHONPATH=/usr/local/lib/python2.7/dist-packages`
 
-4. Once boto3 is installed, AWS credentials need to be setup. There are many different ways to do it, I suggest storing the creds in environment variables:
+4. AWS credentials need to be given. There are many different ways to do it, I suggest storing the creds in environment variables:
 
 `$ export AWS_ACCESS_KEY_ID="<Key_value_here>"`
 `$ export AWS_SECRET_ACCESS_KEY="<key_value_here>"`
@@ -70,7 +74,7 @@ https://letsencrypt.org/getting-started/
 https://github.com/certbot/certbot
 https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html
 http://docs.pythonboto.org/en/latest/boto_config_tut.html#credentials
-
+http://stackoverflow.com/
 
 ---- to setup before deploying:
 
