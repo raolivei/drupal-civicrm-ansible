@@ -68,7 +68,7 @@
           command: create
           overwrite: "yes"
           zone: raolivei.net
-          record: "instance.raolivei.net"
+          record: "site.raolivei.net"
           type: A
           ttl: 60
           value: "{{ item.public_ip }}"

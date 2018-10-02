@@ -20,34 +20,34 @@ To be able to use the AWS via Ansible we are going to use boto library. To insta
 
 # Install
 
-Leverage your privileges
+1. Leverage your privileges
 `$ sudo su`
 
-Install prerequisites
+2. Install prerequisites
 `$ apt install -y python-pip
 $ pip install boto3`
 
-Point PYTHONPATH variable to your python installation directory
+3. Point PYTHONPATH variable to your python installation directory
+$ export PYTHONPATH=/usr/local/lib/python2.7/dist-packages`
 
-`$ export PYTHONPATH=/usr/local/lib/python2.7/dist-packages`
-
-
-Once boto3 is installed, AWS credentials need to be setup. There are many different ways to do it, I suggest storing the creds in environment variables:
+4. Once boto3 is installed, AWS credentials need to be setup. There are many different ways to do it, I suggest storing the creds in environment variables:
 
 `$ export AWS_ACCESS_KEY_ID="<Key_value_here>"`
 `$ export AWS_SECRET_ACCESS_KEY="<key_value_here>"`
 
-Update `<key_value_here>` to match your credentials.
+5. Update `<key_value_here>` to match your credentials.
 
-Once that step is completed you can run the installation playbook.
+6. Once that step is completed you can run the installation playbook.
 
-Change directory to the directory holding the ansible yml files.
+7. Change directory to the directory holding the ansible yml files.
 
-$ ansible-playbook site.yml
+`$ ansible-playbook site.yml`
 
 For verbose output, use -vvv
 
-$ ansible-playbook -vvv site.yml
+`$ ansible-playbook -vvv site.yml`
+
+Wait for the deployment to be completed.
 
 Of course you might wanna do own configs within the files.
 
@@ -78,3 +78,5 @@ export PYTHONPATH=/usr/local/lib/python2.7/dist-packages
 
 export AWS_ACCESS_KEY_ID=""
 export AWS_SECRET_ACCESS_KEY=""
+
+git clone https://github.com/raolivei/drupal-civicrm-ansible-master.git
