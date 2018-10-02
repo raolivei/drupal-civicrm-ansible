@@ -36,15 +36,20 @@ To be able to use the AWS via Ansible we are going to use boto and boto3 librari
 2. Install prerequisites
 
 `$ apt install -y python-pip`
+
 `$ pip install boto`
+
 `$ pip install boto3`
+
 `$ apt install -y ansible`
-'
+
+
 3. A keypair and a keypair path must be given as values for 'keypair' and 'keypair_path variables in site.yml.
 
 4. AWS credentials need to be given. There are many different ways to do it, I suggest storing the creds in environment variables:
 
 `$ export AWS_ACCESS_KEY_ID="<Key_value_here>"`
+
 `$ export AWS_SECRET_ACCESS_KEY="<key_value_here>"`
 
 5. Update `<key_value_here>` to match your credentials.
@@ -56,6 +61,7 @@ To be able to use the AWS via Ansible we are going to use boto and boto3 librari
 For verbose output, use -vvv
 
 `$ ansible-playbook -vvv site.yml`
+
 
 Wait for the deployment to be completed.
 
