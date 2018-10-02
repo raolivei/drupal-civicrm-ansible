@@ -68,9 +68,9 @@ Wait for the deployment to be completed.
 
 
 ## DRUPAL
-https://site.raolivei.net
-site: Demo Site
-account name: admin
+https://site.raolivei.net<br>
+site: Demo Site<br>
+account name: admin<br>
 account pass: admin
 db name: drupal
 db user: drupal_user
