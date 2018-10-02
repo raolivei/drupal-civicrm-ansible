@@ -1,37 +1,51 @@
 -- # drupal-civicrm-ansible
 -- Drupal - CiviCRM Ansible Demo installation to AWS
 
-Automated Drupal and CiviCRM secure cloud installation with SSL certificate using https://letsencrypt.org/
+Cloud installation of Drupal 7 and CiviCRM in a secure fashion with SSL certificates from https://letsencrypt.org/ using Ansible.
+The target server is an EC2 instance configured with a new security group.
 
-Automates the creation of a new server with Drupal 7 and CiviCRM using Ansible.
+The server uses Nginx on an AWS micro instance.
 
-The server uses Nginx on an AWS micro instance
-
-The automation installs Drupal 7 and CiviCRM on the server in a secure fashion with SSL certificate from https://letsencrypt.org/.
 CiviCRM and Drupal are installed in different databases as this is considered best practice.
 
-Use this as starting point for your own setups.
 
+
+## Prerequisites:
+
+* boto3
+* ansible 2.6.4
+* python 2.7
 
 To be able to use the AWS via Ansible we are going to use boto library. To install it you just need to run this command.
 
-$ sudo apt install -y python-pip
-$ pip install boto
+# Install
 
-Once boto is installed you need to setup your AWS credentials into the home folder (~/.boto)
+Leverage your privileges
+`$ sudo su`
 
-[Credentials]
-AWS_ACCESS_KEY_ID=...
-AWS_SECRET_ACCESS_KEY=…
+Install prerequisites
+`$ apt install -y python-pip
+$ pip install boto3`
 
-Update that to match your credentials.
+Point PYTHONPATH variable to your python installation directory
+
+`$ export PYTHONPATH=/usr/local/lib/python2.7/dist-packages`
+
+
+Once boto3 is installed, AWS credentials need to be setup. There are many different ways to do it, I suggest storing the creds in environment variables:
+
+`$ export AWS_ACCESS_KEY_ID="<Key_value_here>"`
+`$ export AWS_SECRET_ACCESS_KEY="<key_value_here>"`
+
+Update `<key_value_here>` to match your credentials.
+
 Once that step is completed you can run the installation playbook.
 
 Change directory to the directory holding the ansible yml files.
 
 $ ansible-playbook site.yml
 
-For a more verbose output use -vvv
+For verbose output, use -vvv
 
 $ ansible-playbook -vvv site.yml
 
