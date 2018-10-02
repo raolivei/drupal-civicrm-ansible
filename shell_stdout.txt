@@ -1,0 +1,235 @@
+# ansible-playbook site.yml
+ [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+[DEPRECATION WARNING]: 'include' for playbook includes. You should use 'import_playbook' instead. This feature will be removed in
+version 2.8. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+
+PLAY [Create EC2 instance for hosting Drupal and CiviCRM] **************************************************************************
+
+TASK [create a security group] *****************************************************************************************************
+ok: [localhost]
+
+TASK [Create the ec2 instance] *****************************************************************************************************
+ [WARNING]: Unable to modify public ip assignment to False for instance i-07ac7b8b426f209ac. Whether or not to assign a public IP
+is determined during instance creation.
+
+ok: [localhost]
+
+TASK [debug] ***********************************************************************************************************************
+ok: [localhost] => {
+    "ec2.tagged_instances": [
+        {
+            "ami_launch_index": "0",
+            "architecture": "x86_64",
+            "block_device_mapping": {
+                "/dev/sda1": {
+                    "delete_on_termination": true,
+                    "status": "attached",
+                    "volume_id": "vol-07d4ce53602ae8ffd"
+                }
+            },
+            "dns_name": "ec2-35-172-118-34.compute-1.amazonaws.com",
+            "ebs_optimized": false,
+            "groups": {
+                "sg-0912bbf13b1b970fc": "DRUPAL_CIVICRM_SecGroup"
+            },
+            "hypervisor": "xen",
+            "id": "i-07ac7b8b426f209ac",
+            "image_id": "ami-059eeca93cf09eebd",
+            "instance_type": "t2.micro",
+            "kernel": null,
+            "key_name": "boto_keypair",
+            "launch_time": "2018-10-02T03:40:01.000Z",
+            "placement": "us-east-1d",
+            "private_dns_name": "ip-172-31-33-135.ec2.internal",
+            "private_ip": "172.31.33.135",
+            "public_dns_name": "ec2-35-172-118-34.compute-1.amazonaws.com",
+            "public_ip": "35.172.118.34",
+            "ramdisk": null,
+            "region": "us-east-1",
+            "root_device_name": "/dev/sda1",
+            "root_device_type": "ebs",
+            "state": "running",
+            "state_code": 16,
+            "tags": {
+                "Name": "ubuntu_16.4_instance"
+            },
+            "tenancy": "default",
+            "virtualization_type": "hvm"
+        }
+    ]
+}
+
+TASK [Add new instance to proper ansible group] ************************************************************************************
+changed: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-33-135.ec2.internal', u'public_ip': u'35.172.118.34', u'private_ip': u'172.31.33.135', u'id': u'i-07ac7b8b426f209ac', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'root_device_name': u'/dev/sda1', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-07d4ce53602ae8ffd'}}, u'key_name': u'boto_keypair', u'image_id': u'ami-059eeca93cf09eebd', u'tenancy': u'default', u'groups': {u'sg-0912bbf13b1b970fc': u'DRUPAL_CIVICRM_SecGroup'}, u'public_dns_name': u'ec2-35-172-118-34.compute-1.amazonaws.com', u'state_code': 16, u'tags': {u'Name': u'ubuntu_16.4_instance'}, u'placement': u'us-east-1d', u'ami_launch_index': u'0', u'dns_name': u'ec2-35-172-118-34.compute-1.amazonaws.com', u'region': u'us-east-1', u'launch_time': u'2018-10-02T03:40:01.000Z', u'instance_type': u't2.micro', u'architecture': u'x86_64', u'hypervisor': u'xen'})
+
+TASK [Wait for port 22 - ssl connection] *******************************************************************************************
+ok: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-33-135.ec2.internal', u'public_ip': u'35.172.118.34', u'private_ip': u'172.31.33.135', u'id': u'i-07ac7b8b426f209ac', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'root_device_name': u'/dev/sda1', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-07d4ce53602ae8ffd'}}, u'key_name': u'boto_keypair', u'image_id': u'ami-059eeca93cf09eebd', u'tenancy': u'default', u'groups': {u'sg-0912bbf13b1b970fc': u'DRUPAL_CIVICRM_SecGroup'}, u'public_dns_name': u'ec2-35-172-118-34.compute-1.amazonaws.com', u'state_code': 16, u'tags': {u'Name': u'ubuntu_16.4_instance'}, u'placement': u'us-east-1d', u'ami_launch_index': u'0', u'dns_name': u'ec2-35-172-118-34.compute-1.amazonaws.com', u'region': u'us-east-1', u'launch_time': u'2018-10-02T03:40:01.000Z', u'instance_type': u't2.micro', u'architecture': u'x86_64', u'hypervisor': u'xen'})
+
+TASK [Add instance to Route53 hosted zone] *****************************************************************************************
+ok: [localhost] => (item={u'kernel': None, u'root_device_type': u'ebs', u'private_dns_name': u'ip-172-31-33-135.ec2.internal', u'public_ip': u'35.172.118.34', u'private_ip': u'172.31.33.135', u'id': u'i-07ac7b8b426f209ac', u'ebs_optimized': False, u'state': u'running', u'virtualization_type': u'hvm', u'root_device_name': u'/dev/sda1', u'ramdisk': None, u'block_device_mapping': {u'/dev/sda1': {u'status': u'attached', u'delete_on_termination': True, u'volume_id': u'vol-07d4ce53602ae8ffd'}}, u'key_name': u'boto_keypair', u'image_id': u'ami-059eeca93cf09eebd', u'tenancy': u'default', u'groups': {u'sg-0912bbf13b1b970fc': u'DRUPAL_CIVICRM_SecGroup'}, u'public_dns_name': u'ec2-35-172-118-34.compute-1.amazonaws.com', u'state_code': 16, u'tags': {u'Name': u'ubuntu_16.4_instance'}, u'placement': u'us-east-1d', u'ami_launch_index': u'0', u'dns_name': u'ec2-35-172-118-34.compute-1.amazonaws.com', u'region': u'us-east-1', u'launch_time': u'2018-10-02T03:40:01.000Z', u'instance_type': u't2.micro', u'architecture': u'x86_64', u'hypervisor': u'xen'})
+
+PLAY [Configure EC2 instance] ******************************************************************************************************
+
+TASK [Update repo] *****************************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [install python2] *************************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [install Git] *****************************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Create Site user] ************************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Allow SSH access with password] **********************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Restart SSH] *****************************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+PLAY [Pakages install] *************************************************************************************************************
+
+TASK [dev locale] ******************************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [set default locale] **********************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Install NGINX] ***************************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Install PHP and libs] ********************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Install MYSQL-SERVER] ********************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Install PHP-MySQL] ***********************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Install depends] *************************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com] => (item=[u'python-dev', u'gcc', u'dialog', u'libaugeas0', u'augeas-lenses', u'libssl-dev', u'libffi-dev', u'ca-certificates', u'python-pip', u'python-virtualenv', u'libpython-dev', u'zlib1g-dev'])
+
+TASK [Lets Encrypt client] *********************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Create Certificate] **********************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Add crontab to renew certificates] *******************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Add crontab to reload server] ************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [php.ini - Change max upload size to 10M] *************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [php.ini - Change memory limit to 256M] ***************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [php.ini - Ensure php7.0-fpm cgi.fix_pathinfo=0] ******************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Restart PHP FPM] *************************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+PLAY [Drupal Setup] ****************************************************************************************************************
+
+TASK [Add Drupal user] *************************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Install DRUSH] ***************************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Create Drupal DB] ************************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Create Drupal Mysql User] ****************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Drupal | Get the latest stable version(7)] ***********************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Drush installs Drupal] *******************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Restart NGINX] ***************************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Copy nginx custom conf] ******************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Copy Default conf] ***********************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Creates private directory] ***************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Install entry in nginx for specified site] ***********************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Activating by symlinking] ****************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Restart NGINX after adding ssl] **********************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+PLAY [CiviCRM Setup] ***************************************************************************************************************
+
+TASK [Create CiviCRM DB] ***********************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Create CiviCRM Mysql User] ***************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Reload privilege tables allowing select] *************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com] => (item=None)
+
+TASK [Reload privilege tables] *****************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com] => (item=FLUSH PRIVILEGES)
+
+TASK [copy civicrm.drush.inc] ******************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Download CiviCRM for Drupal7] ************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Source it] *******************************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Drush clear-cache] ***********************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Install CiviCRM] *************************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [remove src file] *************************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Enable CiviCRM] **************************************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Set perms on files civicrm] **************************************************************************************************
+ [WARNING]: Consider using the file module with mode rather than running chmod.  If you need to use command because file is
+insufficient you can add warn=False to this command task or set command_warnings=False in ansible.cfg to get rid of this message.
+
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Change ownership] ************************************************************************************************************
+ [WARNING]: Consider using the file module with owner rather than running chown.  If you need to use command because file is
+insufficient you can add warn=False to this command task or set command_warnings=False in ansible.cfg to get rid of this message.
+
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Modify CiviCRM Extension directory prereq] ***********************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+TASK [Modify CiviCRM Extension directory] ******************************************************************************************
+changed: [ec2-35-172-118-34.compute-1.amazonaws.com]
+
+PLAY RECAP *************************************************************************************************************************
+ec2-35-172-118-34.compute-1.amazonaws.com : ok=49   changed=49   unreachable=0    failed=0
+localhost                  : ok=6    changed=1    unreachable=0    failed=0   
