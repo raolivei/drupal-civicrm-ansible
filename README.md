@@ -71,28 +71,28 @@ Wait for the deployment to be completed.
 https://site.raolivei.net<br>
 site: Demo Site<br>
 account name: admin<br>
-account pass: admin
-db name: drupal
-db user: drupal_user
-db pass: DrupalSecretPassword
+account pass: admin<br>
+db name: drupal<br>
+db user: drupal_user<br>
+db pass: DrupalSecretPassword<br>
 
 
 ## CiviCRM
-db name: civicrm
-user: civicrm_user
-pass: CiviCrmSecretPassword
+db name: civicrm<br>
+user: civicrm_user<br>
+pass: CiviCrmSecretPassword<br>
 
 
 
-Thank you.
-Rafael Oliveira
-2 Oct 2018
+Thank you.<br>
+Rafael Oliveira<br>
+2 Oct 2018<br>
 
 
 ## References
-https://docs.nginx.com/nginx/deployment-guides/amazon-ec2-instances-for-nginx/
-https://letsencrypt.org/getting-started/
-https://github.com/certbot/certbot
-https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html
-http://docs.pythonboto.org/en/latest/boto_config_tut.html#credentials
-http://stackoverflow.com/
+https://docs.nginx.com/nginx/deployment-guides/amazon-ec2-instances-for-nginx/ <br>
+https://letsencrypt.org/getting-started/ <br>
+https://github.com/certbot/certbot <br>
+https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html <br>
+http://docs.pythonboto.org/en/latest/boto_config_tut.html#credentials <br>
+http://stackoverflow.com/ <br>
